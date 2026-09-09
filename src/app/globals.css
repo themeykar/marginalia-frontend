@@ -7,6 +7,12 @@
   --primary: #7A2E3A;
   --secondary: #C9A15E;
   --status-reading: #6B7B6E;
+  --spine-burgundy: #7A2E3A;
+  --spine-sage: #6B7B6E;
+  --spine-gold: #C9A15E;
+  --spine-navy: #2A3644;
+  --spine-terracotta: #9B4A38;
+  --spine-parchment: #D8CEBC;
 }
 
 @theme inline {
@@ -16,6 +22,12 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-status-reading: var(--status-reading);
+  --color-spine-burgundy: var(--spine-burgundy);
+  --color-spine-sage: var(--spine-sage);
+  --color-spine-gold: var(--spine-gold);
+  --color-spine-navy: var(--spine-navy);
+  --color-spine-terracotta: var(--spine-terracotta);
+  --color-spine-parchment: var(--spine-parchment);
   --font-serif: var(--font-fraunces);
   --font-sans: var(--font-inter);
 }

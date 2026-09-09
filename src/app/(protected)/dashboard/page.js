@@ -141,8 +141,22 @@ export default function DashboardPage() {
         )}
       </section>
 
+      {/* Shelf Header Bar with "Add a book" entry point */}
+      <div className="mt-12 sm:mt-16 flex items-center justify-between">
+        <span className="font-serif italic text-sm text-foreground/50">
+          The Shelf
+        </span>
+        <Link
+          href="/books/new"
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-sans font-medium text-foreground/80 hover:text-foreground bg-card/[0.04] hover:bg-card/[0.08] border border-foreground/15 hover:border-foreground/30 px-3 py-1.5 rounded transition-all duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
+        >
+          <span className="text-secondary text-base leading-none">+</span>
+          <span>Add a book</span>
+        </Link>
+      </div>
+
       {/* The Shelf: 3 Status Sections (Reading, Want to Read, Read) */}
-      <div className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
+      <div className="mt-6 space-y-12 sm:space-y-16">
         {shelfSections.map((section) => (
           <section key={section.id} className="pt-8 border-t border-foreground/10">
             {/* Section Heading */}
