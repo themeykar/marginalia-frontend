@@ -118,18 +118,57 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
     setFieldErrors({});
     setIsSubmitting(true);
 
+    // Ensure cover_color is always a valid hex string from the curated palette
+    const resolvedCoverColor =
+      selectedCoverColor ||
+      SPINE_PALETTE[(title.trim().charCodeAt(0) || 0) % SPINE_PALETTE.length]?.hex ||
+      SPINE_PALETTE[0].hex;
+
     const payload = {
       title: title.trim(),
       author: author.trim(),
-      genre: genre.trim() || null,
+      genre: genre.trim(), // Send empty string "" instead of null when left blank
       status: status,
-      page_count: pageCount.trim() ? parseInt(pageCount, 10) : null,
-      rating: rating ? parseInt(rating, 10) : null,
-      date_started: dateStarted || null,
-      date_finished: dateFinished || null,
-      cover_url: selectedCoverType === "url" && selectedCoverUrl ? selectedCoverUrl : null,
-      cover_color: selectedCoverType === "color" && selectedCoverColor ? selectedCoverColor : null,
+      cover_color: resolvedCoverColor, // ALWAYS a valid hex string, never null, never omitted
     };
+
+    // If a cover URL was selected, attach it
+    if (selectedCoverType === "url" && selectedCoverUrl.trim()) {
+      payload.cover_url = selectedCoverUrl.trim();
+    } else if (isEdit && initialData?.cover_url) {
+      payload.cover_url = null;
+    }
+
+    // Optional numeric & date fields: omit the key entirely when blank rather than sending explicit null
+    if (pageCount.trim()) {
+      const parsed = parseInt(pageCount.trim(), 10);
+      if (!isNaN(parsed)) {
+        payload.page_count = parsed;
+      }
+    } else if (isEdit && initialData?.page_count !== null && initialData?.page_count !== undefined) {
+      payload.page_count = null;
+    }
+
+    if (rating !== null && rating !== undefined && rating !== "") {
+      const parsedRating = parseInt(rating, 10);
+      if (!isNaN(parsedRating)) {
+        payload.rating = parsedRating;
+      }
+    } else if (isEdit && initialData?.rating !== null && initialData?.rating !== undefined) {
+      payload.rating = null;
+    }
+
+    if (dateStarted) {
+      payload.date_started = dateStarted;
+    } else if (isEdit && initialData?.date_started) {
+      payload.date_started = null;
+    }
+
+    if (dateFinished) {
+      payload.date_finished = dateFinished;
+    } else if (isEdit && initialData?.date_finished) {
+      payload.date_finished = null;
+    }
 
     try {
       const endpoint = isEdit ? `/api/books/${bookId}/` : "/api/books/";
