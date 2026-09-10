@@ -179,8 +179,8 @@ export default function DashboardPage() {
               </p>
             ) : (
               <div>
-                {/* Horizontal bookshelf row */}
-                <div className="flex items-end gap-3 sm:gap-4 overflow-x-auto pb-3 pt-4 px-1">
+                {/* Bookshelf wrapping layout */}
+                <div className="flex flex-wrap items-end gap-x-3 sm:gap-x-4 gap-y-8 sm:gap-y-10 pt-4 pb-4 px-1">
                   {section.books.map((book) => {
                     const { heightClass, widthClass } = getSpineStyles(book);
 
