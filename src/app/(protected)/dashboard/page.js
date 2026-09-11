@@ -16,9 +16,9 @@ function getSpineStyles(book) {
   ];
   const widthClasses = [
     "w-11 sm:w-12",
-    "w-13 sm:w-15",
+    "w-12 sm:w-13",
     "w-12 sm:w-14",
-    "w-14 sm:w-16",
+    "w-13 sm:w-14",
     "w-12 sm:w-13",
   ];
 
