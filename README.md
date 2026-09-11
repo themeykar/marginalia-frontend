@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Marginalia — Frontend
 
-## Getting Started
+A quiet, personal reading journal. Track what you're reading, hold onto the lines that stopped you mid-page, and watch a year of reading assemble into a lasting reflection.
 
-First, run the development server:
+**Live site:** https://marginalia-online.vercel.app
+**Backend API:** https://marginalia-backend-ygk4.onrender.com
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router), JavaScript
+- **Styling:** Tailwind CSS v4 (theme tokens defined via `@theme` in `globals.css`, no `tailwind.config.js`)
+- **Fonts:** Fraunces (serif — titles, quotes) + Inter (sans — UI, stats), loaded via `next/font/google`
+- **Motion:** Framer Motion, used deliberately and sparingly (one considered moment per page)
+- **Auth:** JWT access/refresh tokens, stored in `localStorage`
+- **Hosting:** Vercel
+
+---
+
+## Design System
+
+| Token | Value | Use |
+|---|---|---|
+| `bg-background` | `#1B2430` (Ink Navy) | Page background |
+| `bg-card` | `#F0E9DA` (Warm Parchment) | Card surfaces |
+| `bg-primary` | `#7A2E3A` (Deep Burgundy) | Primary actions/accents |
+| `bg-secondary` | `#C9A15E` (Soft Gold) | Secondary accents, ratings |
+| `bg-status-reading` | `#6B7B6E` (Muted Sage) | "Reading" status accent |
+
+Design feel: *"a well-loved library at night"* — tactile, journal-like, generous negative space, restraint over density. Motion is used exactly once per page as a deliberate moment, never as decoration.
+
+---
+
+## Features
+
+- Public homepage (Nav, Hero with staggered text reveal, Features preview, Footer)
+- Signup (editorial split-screen layout) and Login (quiet centered form) — visually distinct by design
+- JWT-protected route shell with automatic 401 → refresh → retry handling
+- The Shelf — books grouped by status, spine visual treatment (real cover art or a curated spine-color fallback), wraps into multiple rows as the collection grows
+- Add/Edit Book form with an Open Library cover-search flow (explicit search button, no live/auto search) and a curated color-swatch fallback
+- Book Detail page — metadata, inline Notes & Quotes journal (add/edit/delete), book deletion
+- Year in Books — an auto-advancing, story-style reveal of the year's reading stats, date-gated to **December 15–31**
+
+---
+
+## Local Setup
+
+```bash
+git clone <repo-url>
+cd marginalia-frontend
+npm install
+```
+
+Create a `.env.local`:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+Run the Django backend locally alongside this (separate terminal, separate repo) before starting the frontend, since most pages depend on it.
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Runs at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables (Production / Vercel)
 
-## Learn More
+| Variable | Value |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | The real deployed backend URL (`https://marginalia-backend-ygk4.onrender.com`) |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment (Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Default Next.js build settings — no custom build command needed. Vercel auto-detects and builds on push to `main`.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Architecture Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/lib/auth.js` — shared token storage helpers (`setTokens`, `getAccessToken`, `getRefreshToken`, `clearTokens`)
+- `src/lib/api.js` — `apiFetch()`, the single authenticated API client used by every protected page; handles the access-token-expired → refresh → retry pattern centrally so it's never duplicated per-page
+- `src/app/(protected)/layout.js` — route-group layout verifying the JWT on every authenticated page before rendering, redirecting to `/login` if missing/invalid
+- Year in Books' date gate (`isWithinRevealWindow()`) is a frontend-only check — the backend endpoint itself has no date restriction
+
+---
+
+## Known Constraints
+
+- Tokens are stored in `localStorage` (not httpOnly cookies) — a deliberate simplicity tradeoff for this project's scope, with minor XSS exposure as a known tradeoff.
+- Year in Books is gated by client-side date logic only; the underlying `/api/wrapup/` data is always available on the backend regardless of date.
