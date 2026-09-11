@@ -18,11 +18,11 @@ export const metadata = {
     template: "%s | Marginalia",
   },
   description:
-    "A quiet sanctuary for your reading life. Track books unhurried, hold onto the passages that stopped you mid-page, and watch your reading journey assemble into lasting reflection.",
+    "A quiet sanctuary for your reading life. Track books unhurried, and hold onto the passages that stopped you mid-page.",
   openGraph: {
     title: "Marginalia — A Quiet Reading Journal",
     description:
-      "A quiet sanctuary for your reading life. Track books unhurried, hold onto the passages that stopped you mid-page, and watch your reading journey assemble into lasting reflection.",
+      "A quiet sanctuary for your reading life. Track books unhurried, and hold onto the passages that stopped you mid-page.",
     url: "https://marginalia-online.vercel.app",
     siteName: "Marginalia",
     images: [
@@ -39,7 +39,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Marginalia — A Quiet Reading Journal",
     description:
-      "A quiet sanctuary for your reading life. Track books unhurried, hold onto the passages that stopped you mid-page, and watch your reading journey assemble into lasting reflection.",
+      "A quiet sanctuary for your reading life. Track books unhurried, and hold onto the passages that stopped you mid-page.",
     images: ["/og-image.png"],
   },
 };
