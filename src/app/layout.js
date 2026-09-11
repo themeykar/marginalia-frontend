@@ -12,8 +12,36 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Marginalia",
-  description: "A reading tracker and journal for the books you love.",
+  metadataBase: new URL("https://marginalia-online.vercel.app"),
+  title: {
+    default: "Marginalia — A Quiet Reading Journal",
+    template: "%s | Marginalia",
+  },
+  description:
+    "A quiet sanctuary for your reading life. Track books unhurried, hold onto the passages that stopped you mid-page, and watch your reading journey assemble into lasting reflection.",
+  openGraph: {
+    title: "Marginalia — A Quiet Reading Journal",
+    description:
+      "A quiet sanctuary for your reading life. Track books unhurried, hold onto the passages that stopped you mid-page, and watch your reading journey assemble into lasting reflection.",
+    url: "https://marginalia-online.vercel.app",
+    siteName: "Marginalia",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Marginalia — A Quiet Reading Journal",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Marginalia — A Quiet Reading Journal",
+    description:
+      "A quiet sanctuary for your reading life. Track books unhurried, hold onto the passages that stopped you mid-page, and watch your reading journey assemble into lasting reflection.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
