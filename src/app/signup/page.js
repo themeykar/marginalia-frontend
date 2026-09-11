@@ -156,8 +156,8 @@ export default function SignupPage() {
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground selection:bg-secondary/30 selection:text-foreground">
       {/* Split-screen container */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 min-h-[100dvh]">
-        {/* Editorial / Atmospheric Panel (Left side on desktop) */}
-        <aside className="lg:col-span-5 bg-card/[0.02] border-b lg:border-b-0 lg:border-r border-foreground/10 p-6 sm:p-10 lg:p-14 flex flex-col justify-between relative overflow-hidden">
+        {/* Editorial / Atmospheric Panel (Left side on desktop, bottom on mobile) */}
+        <aside className="order-2 lg:order-1 lg:col-span-5 bg-card/[0.02] border-t lg:border-t-0 lg:border-r border-foreground/10 p-6 sm:p-10 lg:p-14 flex flex-col justify-between relative overflow-hidden">
           {/* Subtle background ambient glow */}
           <div
             className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-secondary/[0.03] blur-3xl pointer-events-none"
@@ -250,8 +250,8 @@ export default function SignupPage() {
           </div>
         </aside>
 
-        {/* Signup Form Panel (Right side on desktop) */}
-        <main className="lg:col-span-7 flex flex-col justify-between p-6 sm:p-10 lg:p-14 xl:p-16">
+        {/* Signup Form Panel (Right side on desktop, top on mobile) */}
+        <main className="order-1 lg:order-2 lg:col-span-7 flex flex-col justify-between p-6 sm:p-10 lg:p-14 xl:p-16">
           {/* Top navigation / login switch */}
           <div className="flex justify-end items-center mb-8 sm:mb-12">
             <span className="text-sm font-sans text-foreground/70 mr-2">
