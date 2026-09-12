@@ -424,39 +424,63 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
         </div>
 
         {/* Date started / Date finished */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-          <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full min-w-0 max-w-full">
+          <div className="w-full min-w-0 max-w-full">
             <label
               htmlFor="dateStarted"
               className="block text-xs sm:text-sm font-sans font-medium text-foreground/80 tracking-wide uppercase mb-1.5"
             >
               Date Started
             </label>
-            <input
-              id="dateStarted"
-              name="dateStarted"
-              type="date"
-              value={dateStarted}
-              onChange={(e) => setDateStarted(e.target.value)}
-              className="w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark]"
-            />
+            <div className="flex items-center gap-2 w-full min-w-0 max-w-full">
+              <input
+                id="dateStarted"
+                name="dateStarted"
+                type="date"
+                value={dateStarted}
+                onChange={(e) => setDateStarted(e.target.value)}
+                className="flex-1 min-w-0 w-full max-w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark] box-border"
+              />
+              {dateStarted && (
+                <button
+                  type="button"
+                  onClick={() => setDateStarted("")}
+                  className="shrink-0 text-xs font-sans text-foreground/50 hover:text-foreground underline transition-colors px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 rounded"
+                  aria-label="Clear Date Started"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
           </div>
 
-          <div>
+          <div className="w-full min-w-0 max-w-full">
             <label
               htmlFor="dateFinished"
               className="block text-xs sm:text-sm font-sans font-medium text-foreground/80 tracking-wide uppercase mb-1.5"
             >
               Date Finished
             </label>
-            <input
-              id="dateFinished"
-              name="dateFinished"
-              type="date"
-              value={dateFinished}
-              onChange={(e) => setDateFinished(e.target.value)}
-              className="w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark]"
-            />
+            <div className="flex items-center gap-2 w-full min-w-0 max-w-full">
+              <input
+                id="dateFinished"
+                name="dateFinished"
+                type="date"
+                value={dateFinished}
+                onChange={(e) => setDateFinished(e.target.value)}
+                className="flex-1 min-w-0 w-full max-w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark] box-border"
+              />
+              {dateFinished && (
+                <button
+                  type="button"
+                  onClick={() => setDateFinished("")}
+                  className="shrink-0 text-xs font-sans text-foreground/50 hover:text-foreground underline transition-colors px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 rounded"
+                  aria-label="Clear Date Finished"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
