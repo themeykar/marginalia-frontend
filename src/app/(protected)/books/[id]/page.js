@@ -239,7 +239,7 @@ export default function BookDetailPage() {
 
   if (isLoadingBook) {
     return (
-      <div className="flex-1 max-w-5xl w-full mx-auto px-6 sm:px-8 py-10 sm:py-14 animate-pulse">
+      <div className="flex-1 max-w-5xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 animate-pulse">
         <div className="h-4 w-28 bg-foreground/10 rounded mb-8" />
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           <div className="md:col-span-4 aspect-[2/3] max-w-[260px] bg-foreground/10 rounded-md" />
@@ -256,12 +256,12 @@ export default function BookDetailPage() {
 
   if (bookError || !book) {
     return (
-      <div className="flex-1 max-w-5xl w-full mx-auto px-6 sm:px-8 py-12 sm:py-16 text-center">
-        <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-8 sm:p-12 max-w-md mx-auto">
-          <h1 className="font-serif text-2xl text-foreground font-normal mb-2">
+      <div className="flex-1 max-w-5xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-16 text-center">
+        <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-6 sm:p-12 max-w-md mx-auto">
+          <h1 className="font-serif text-2xl text-foreground font-normal mb-2 break-words">
             Volume Not Found
           </h1>
-          <p className="text-sm font-sans text-foreground/60 mb-6">
+          <p className="text-sm font-sans text-foreground/60 mb-6 break-words">
             {bookError || "The volume you requested is not available in your ledger."}
           </p>
           <Link
@@ -279,7 +279,7 @@ export default function BookDetailPage() {
   const finishDateFormatted = formatReadableDate(book.date_finished);
 
   return (
-    <div className="flex-1 max-w-5xl w-full mx-auto px-6 sm:px-8 py-8 sm:py-12">
+    <div className="flex-1 max-w-5xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-12">
       {/* Top Breadcrumb Navigation */}
       <div className="mb-8">
         <Link
@@ -311,10 +311,10 @@ export default function BookDetailPage() {
             >
               <div className="w-full h-1 border-t border-b border-foreground/25 opacity-50 shrink-0" />
               <div className="text-center my-auto px-2">
-                <h2 className="font-serif text-xl sm:text-2xl text-card font-medium leading-snug drop-shadow-sm">
+                <h2 className="font-serif text-xl sm:text-2xl text-card font-medium leading-snug drop-shadow-sm break-words">
                   {book.title}
                 </h2>
-                <p className="mt-2 font-sans text-xs text-card/80 font-light">
+                <p className="mt-2 font-sans text-xs text-card/80 font-light break-words">
                   {book.author}
                 </p>
               </div>
@@ -324,7 +324,7 @@ export default function BookDetailPage() {
         </div>
 
         {/* Book Information & Actions (Right column) */}
-        <div className="md:col-span-8 flex flex-col justify-between">
+        <div className="md:col-span-8 flex flex-col justify-between min-w-0">
           <div>
             {/* Status Indicator */}
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded border border-foreground/10 bg-card/[0.03] text-xs font-sans text-foreground/70 mb-3">
@@ -341,10 +341,10 @@ export default function BookDetailPage() {
             </div>
 
             {/* Title & Author */}
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-foreground leading-[1.15] tracking-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-foreground leading-[1.15] tracking-tight break-words">
               {book.title}
             </h1>
-            <p className="mt-2 font-sans text-lg sm:text-xl text-foreground/75 font-light">
+            <p className="mt-2 font-sans text-lg sm:text-xl text-foreground/75 font-light break-words">
               by {book.author}
             </p>
 
@@ -413,42 +413,44 @@ export default function BookDetailPage() {
           </div>
 
           {/* Metadata Action Bar (Edit & Delete) */}
-          <div className="mt-8 pt-6 border-t border-foreground/10 flex items-center justify-between gap-4 flex-wrap">
+          <div className="mt-8 pt-6 border-t border-foreground/10 flex items-center justify-between gap-3 sm:gap-4 flex-wrap">
             <Link
               href={`/books/${id}/edit`}
-              className="inline-flex items-center justify-center rounded-md bg-card/[0.08] hover:bg-card/[0.14] px-4 py-2 text-xs sm:text-sm font-sans font-medium text-foreground border border-foreground/15 transition-all duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
+              className="inline-flex items-center justify-center rounded-md bg-card/[0.08] hover:bg-card/[0.14] px-4 py-2 text-xs sm:text-sm font-sans font-medium text-foreground border border-foreground/15 transition-all duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 shrink-0"
             >
               Edit volume
             </Link>
 
             {/* Destructive Delete Confirmation Flow */}
             {isConfirmingBookDelete ? (
-              <div className="flex items-center gap-3 p-2 rounded-md bg-primary/20 border border-primary/40">
-                <span className="text-xs font-sans text-foreground/90">
+              <div className="flex items-center flex-wrap gap-2 sm:gap-3 p-2.5 sm:p-2 rounded-md bg-primary/20 border border-primary/40 max-w-full">
+                <span className="text-xs font-sans text-foreground/90 w-full sm:w-auto">
                   Are you sure? This cannot be undone.
                 </span>
-                <button
-                  type="button"
-                  onClick={handleDeleteBook}
-                  disabled={isDeletingBook}
-                  className="px-2.5 py-1 text-xs font-sans font-medium bg-primary text-card hover:bg-primary/90 rounded transition-all active:scale-[0.95] disabled:opacity-50"
-                >
-                  {isDeletingBook ? "Deleting..." : "Confirm delete"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsConfirmingBookDelete(false)}
-                  disabled={isDeletingBook}
-                  className="text-xs font-sans text-foreground/60 hover:text-foreground transition-colors px-1"
-                >
-                  Cancel
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleDeleteBook}
+                    disabled={isDeletingBook}
+                    className="px-2.5 py-1 text-xs font-sans font-medium bg-primary text-card hover:bg-primary/90 rounded transition-all active:scale-[0.95] disabled:opacity-50 shrink-0"
+                  >
+                    {isDeletingBook ? "Deleting..." : "Confirm delete"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsConfirmingBookDelete(false)}
+                    disabled={isDeletingBook}
+                    className="text-xs font-sans text-foreground/60 hover:text-foreground transition-colors px-1 shrink-0"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             ) : (
               <button
                 type="button"
                 onClick={() => setIsConfirmingBookDelete(true)}
-                className="text-xs sm:text-sm font-sans text-foreground/50 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 rounded px-1 py-0.5"
+                className="text-xs sm:text-sm font-sans text-foreground/50 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 rounded px-1 py-0.5 shrink-0"
               >
                 Delete this book
               </button>
@@ -459,17 +461,17 @@ export default function BookDetailPage() {
 
       {/* 2. NOTES & QUOTES SECTION */}
       <section className="mt-12 sm:mt-16">
-        <div className="flex items-baseline justify-between mb-8">
+        <div className="flex items-baseline justify-between mb-8 flex-wrap gap-2">
           <div>
-            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-foreground tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-foreground tracking-tight break-words">
               Notes &amp; Quotes
             </h2>
-            <p className="mt-1 text-xs sm:text-sm font-sans font-light text-foreground/60">
+            <p className="mt-1 text-xs sm:text-sm font-sans font-light text-foreground/60 break-words">
               Passages that caught your eye and reflections recorded along the way.
             </p>
           </div>
           {notes.length > 0 && (
-            <span className="text-xs font-sans text-foreground/45 font-light">
+            <span className="text-xs font-sans text-foreground/45 font-light shrink-0">
               {notes.length} {notes.length === 1 ? "entry" : "entries"}
             </span>
           )}
@@ -483,8 +485,8 @@ export default function BookDetailPage() {
           </div>
         ) : notes.length === 0 ? (
           /* Empty state on-voice invitation */
-          <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-8 text-center my-6">
-            <p className="font-serif italic text-foreground/55 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+          <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-6 sm:p-8 text-center my-6">
+            <p className="font-serif italic text-foreground/55 text-sm sm:text-base max-w-md mx-auto leading-relaxed break-words">
               No passages or reflections recorded for this volume yet. Preserve a
               line that moved you or jot down a thought from the margin below.
             </p>
@@ -498,18 +500,18 @@ export default function BookDetailPage() {
               return (
                 <div
                   key={entry.id}
-                  className="group relative rounded-lg border border-foreground/10 bg-card/[0.02] p-5 sm:p-6 transition-colors hover:border-foreground/20"
+                  className="group relative rounded-lg border border-foreground/10 bg-card/[0.02] p-4 sm:p-6 transition-colors hover:border-foreground/20 min-w-0"
                 >
                   {isEditing ? (
                     /* Inline edit mode */
-                    <div className="space-y-3">
+                    <div className="space-y-3 min-w-0">
                       <textarea
                         value={editContent}
                         onChange={(e) => setEditContent(e.target.value)}
                         rows={3}
-                        className="w-full rounded-md p-3 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/20 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all"
+                        className="w-full min-w-0 rounded-md p-3 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/20 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all"
                       />
-                      <div className="flex items-center justify-end gap-3">
+                      <div className="flex items-center justify-end flex-wrap gap-3">
                         <button
                           type="button"
                           onClick={() => {
@@ -517,7 +519,7 @@ export default function BookDetailPage() {
                             setEditContent("");
                           }}
                           disabled={isSavingEdit}
-                          className="text-xs font-sans text-foreground/60 hover:text-foreground transition-colors"
+                          className="text-xs font-sans text-foreground/60 hover:text-foreground transition-colors shrink-0"
                         >
                           Cancel
                         </button>
@@ -525,7 +527,7 @@ export default function BookDetailPage() {
                           type="button"
                           onClick={() => handleSaveNoteEdit(entry.id)}
                           disabled={isSavingEdit || !editContent.trim()}
-                          className="px-3 py-1.5 text-xs font-sans font-medium bg-primary text-card rounded hover:bg-primary/90 transition-all active:scale-[0.97] disabled:opacity-50"
+                          className="px-3 py-1.5 text-xs font-sans font-medium bg-primary text-card rounded hover:bg-primary/90 transition-all active:scale-[0.97] disabled:opacity-50 shrink-0"
                         >
                           {isSavingEdit ? "Saving..." : "Save changes"}
                         </button>
@@ -533,32 +535,32 @@ export default function BookDetailPage() {
                     </div>
                   ) : (
                     /* Read view: Note vs Quote distinction */
-                    <div>
+                    <div className="min-w-0">
                       {entry.entry_type === "quote" ? (
                         /* Quote presentation */
-                        <div className="flex items-start gap-3">
+                        <div className="flex items-start gap-3 min-w-0">
                           <span
                             className="font-serif text-3xl sm:text-4xl text-secondary/40 select-none leading-none -mt-1 shrink-0"
                             aria-hidden="true"
                           >
                             &ldquo;
                           </span>
-                          <div className="flex-1">
-                            <p className="font-serif italic text-foreground/90 text-base sm:text-lg leading-relaxed whitespace-pre-wrap pl-1">
+                          <div className="flex-1 min-w-0">
+                            <p className="font-serif italic text-foreground/90 text-base sm:text-lg leading-relaxed whitespace-pre-wrap pl-1 break-words [overflow-wrap:anywhere]">
                               {entry.content}
                             </p>
-                            <div className="mt-3 flex items-center justify-between text-xs font-sans text-foreground/45">
-                              <span>Kept {formatReadableDate(entry.created_at)}</span>
+                            <div className="mt-3 flex items-center justify-between flex-wrap gap-2 text-xs font-sans text-foreground/45">
+                              <span className="shrink-0">Kept {formatReadableDate(entry.created_at)}</span>
 
                               {/* Hover actions */}
                               {isConfirmingDelete ? (
-                                <div className="flex items-center gap-2 text-xs">
+                                <div className="flex items-center flex-wrap gap-2 text-xs">
                                   <span className="text-foreground/70">Delete entry?</span>
                                   <button
                                     type="button"
                                     onClick={() => handleDeleteNote(entry.id)}
                                     disabled={isDeletingNote}
-                                    className="text-primary font-medium hover:underline"
+                                    className="text-primary font-medium hover:underline shrink-0"
                                   >
                                     {isDeletingNote ? "Deleting..." : "Yes, delete"}
                                   </button>
@@ -566,7 +568,7 @@ export default function BookDetailPage() {
                                   <button
                                     type="button"
                                     onClick={() => setDeletingNoteId(null)}
-                                    className="text-foreground/60 hover:text-foreground"
+                                    className="text-foreground/60 hover:text-foreground shrink-0"
                                   >
                                     Cancel
                                   </button>
@@ -598,26 +600,26 @@ export default function BookDetailPage() {
                         </div>
                       ) : (
                         /* Note presentation */
-                        <div>
+                        <div className="min-w-0">
                           <div className="inline-flex items-center gap-1.5 mb-2 text-[11px] font-sans tracking-wider uppercase text-foreground/50">
                             <span className="w-1.5 h-1.5 rounded-full bg-status-reading" />
                             <span>Marginal Note</span>
                           </div>
-                          <p className="font-sans text-foreground/85 text-sm sm:text-base leading-relaxed whitespace-pre-wrap font-light">
+                          <p className="font-sans text-foreground/85 text-sm sm:text-base leading-relaxed whitespace-pre-wrap font-light break-words [overflow-wrap:anywhere]">
                             {entry.content}
                           </p>
-                          <div className="mt-3 flex items-center justify-between text-xs font-sans text-foreground/45">
-                            <span>Noted {formatReadableDate(entry.created_at)}</span>
+                          <div className="mt-3 flex items-center justify-between flex-wrap gap-2 text-xs font-sans text-foreground/45">
+                            <span className="shrink-0">Noted {formatReadableDate(entry.created_at)}</span>
 
                             {/* Hover actions */}
                             {isConfirmingDelete ? (
-                              <div className="flex items-center gap-2 text-xs">
+                              <div className="flex items-center flex-wrap gap-2 text-xs">
                                 <span className="text-foreground/70">Delete entry?</span>
                                 <button
                                   type="button"
                                   onClick={() => handleDeleteNote(entry.id)}
                                   disabled={isDeletingNote}
-                                  className="text-primary font-medium hover:underline"
+                                  className="text-primary font-medium hover:underline shrink-0"
                                 >
                                   {isDeletingNote ? "Deleting..." : "Yes, delete"}
                                 </button>
@@ -625,7 +627,7 @@ export default function BookDetailPage() {
                                 <button
                                   type="button"
                                   onClick={() => setDeletingNoteId(null)}
-                                  className="text-foreground/60 hover:text-foreground"
+                                  className="text-foreground/60 hover:text-foreground shrink-0"
                                 >
                                   Cancel
                                 </button>
@@ -667,15 +669,15 @@ export default function BookDetailPage() {
         <div className="mt-10 pt-8 border-t border-foreground/10">
           <form
             onSubmit={handleCreateNote}
-            className="rounded-lg border border-foreground/10 bg-card/[0.02] p-5 sm:p-7"
+            className="rounded-lg border border-foreground/10 bg-card/[0.02] p-4 sm:p-7 min-w-0"
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
               <span className="font-serif text-lg font-normal text-foreground">
                 Add an entry
               </span>
 
               {/* Toggle for Note vs Quote */}
-              <div className="flex items-center gap-1 p-1 rounded-md bg-card/[0.05] border border-foreground/10">
+              <div className="flex items-center gap-1 p-1 rounded-md bg-card/[0.05] border border-foreground/10 shrink-0">
                 <button
                   type="button"
                   onClick={() => setNewEntryType("quote")}
@@ -702,7 +704,7 @@ export default function BookDetailPage() {
             </div>
 
             {noteFormError && (
-              <p className="text-xs font-sans text-secondary mb-3">
+              <p className="text-xs font-sans text-secondary mb-3 break-words">
                 {noteFormError}
               </p>
             )}
@@ -716,14 +718,14 @@ export default function BookDetailPage() {
                   ? "Record a sentence or passage that stopped you mid-page..."
                   : "Jot down a reflection, marginal thought, or reaction..."
               }
-              className="w-full rounded-md p-3 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
+              className="w-full min-w-0 rounded-md p-3 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
             />
 
             <div className="mt-3 flex justify-end">
               <button
                 type="submit"
                 disabled={isSubmittingNote || !newContent.trim()}
-                className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-xs sm:text-sm font-sans font-medium text-card hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all duration-150 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-xs sm:text-sm font-sans font-medium text-card hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all duration-150 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 shrink-0"
               >
                 {isSubmittingNote
                   ? "Saving entry..."

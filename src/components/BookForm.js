@@ -205,7 +205,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-8 max-w-2xl">
+    <form onSubmit={handleSubmit} noValidate className="space-y-8 max-w-2xl w-full min-w-0">
       {/* General error message */}
       {generalError && (
         <div
@@ -226,19 +226,19 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
             />
           </svg>
-          <p className="font-sans leading-snug">{generalError}</p>
+          <p className="font-sans leading-snug break-words">{generalError}</p>
         </div>
       )}
 
       {/* Section 1: Book Essentials */}
       <div className="space-y-5">
-        <h3 className="font-serif text-lg sm:text-xl font-normal text-foreground tracking-tight border-b border-foreground/10 pb-2">
+        <h3 className="font-serif text-lg sm:text-xl font-normal text-foreground tracking-tight border-b border-foreground/10 pb-2 break-words">
           Volume Details
         </h3>
 
         {/* Title */}
         <div>
-          <div className="flex items-baseline justify-between mb-1.5">
+          <div className="flex items-baseline justify-between mb-1.5 flex-wrap gap-1">
             <label
               htmlFor="title"
               className="block text-xs sm:text-sm font-sans font-medium text-foreground/80 tracking-wide uppercase"
@@ -264,7 +264,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               }
             }}
             placeholder="e.g. Middlemarch"
-            className={`w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 ${
+            className={`w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 ${
               fieldErrors.title
                 ? "border-primary focus-visible:ring-primary/60"
                 : "border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-secondary/40"
@@ -274,7 +274,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
 
         {/* Author */}
         <div>
-          <div className="flex items-baseline justify-between mb-1.5">
+          <div className="flex items-baseline justify-between mb-1.5 flex-wrap gap-1">
             <label
               htmlFor="author"
               className="block text-xs sm:text-sm font-sans font-medium text-foreground/80 tracking-wide uppercase"
@@ -300,7 +300,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               }
             }}
             placeholder="e.g. George Eliot"
-            className={`w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 ${
+            className={`w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 ${
               fieldErrors.author
                 ? "border-primary focus-visible:ring-primary/60"
                 : "border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-secondary/40"
@@ -309,7 +309,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
         </div>
 
         {/* Genre & Page Count (2-column on desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {/* Genre */}
           <div>
             <label
@@ -325,7 +325,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               value={genre}
               onChange={(e) => setGenre(e.target.value)}
               placeholder="e.g. Victorian Fiction"
-              className="w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
+              className="w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
             />
           </div>
 
@@ -345,7 +345,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               value={pageCount}
               onChange={(e) => setPageCount(e.target.value)}
               placeholder="e.g. 838"
-              className="w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
+              className="w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
             />
           </div>
         </div>
@@ -353,7 +353,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
 
       {/* Section 2: Shelf Status & Dates */}
       <div className="space-y-5">
-        <h3 className="font-serif text-lg sm:text-xl font-normal text-foreground tracking-tight border-b border-foreground/10 pb-2">
+        <h3 className="font-serif text-lg sm:text-xl font-normal text-foreground tracking-tight border-b border-foreground/10 pb-2 break-words">
           Shelf Status &amp; Timeline
         </h3>
 
@@ -370,7 +370,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
             name="status"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-background text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
+            className="w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-background text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
           >
             <option value="want_to_read">Want to Read</option>
             <option value="reading">Reading</option>
@@ -380,7 +380,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
 
         {/* Rating (1-5 simple selector) */}
         <div>
-          <div className="flex items-baseline justify-between mb-1.5">
+          <div className="flex items-baseline justify-between mb-1.5 flex-wrap gap-1">
             <span className="block text-xs sm:text-sm font-sans font-medium text-foreground/80 tracking-wide uppercase">
               Rating
             </span>
@@ -394,7 +394,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               </button>
             )}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
             {[1, 2, 3, 4, 5].map((star) => {
               const isFilled = rating !== null && star <= rating;
               return (
@@ -417,14 +417,14 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
                 </button>
               );
             })}
-            <span className="ml-2 text-xs font-sans text-foreground/50">
+            <span className="ml-2 text-xs font-sans text-foreground/50 shrink-0">
               {rating ? `${rating} / 5` : "Unrated"}
             </span>
           </div>
         </div>
 
         {/* Date started / Date finished */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <div>
             <label
               htmlFor="dateStarted"
@@ -438,7 +438,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               type="date"
               value={dateStarted}
               onChange={(e) => setDateStarted(e.target.value)}
-              className="w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark]"
+              className="w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark]"
             />
           </div>
 
@@ -455,7 +455,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               type="date"
               value={dateFinished}
               onChange={(e) => setDateFinished(e.target.value)}
-              className="w-full rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark]"
+              className="w-full min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150 [color-scheme:dark]"
             />
           </div>
         </div>
@@ -463,7 +463,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
 
       {/* Section 3: Book Cover & Spine Color */}
       <div className="space-y-5">
-        <h3 className="font-serif text-lg sm:text-xl font-normal text-foreground tracking-tight border-b border-foreground/10 pb-2">
+        <h3 className="font-serif text-lg sm:text-xl font-normal text-foreground tracking-tight border-b border-foreground/10 pb-2 break-words">
           Cover &amp; Spine
         </h3>
 
@@ -475,7 +475,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
           >
             Search for a cover
           </label>
-          <div className="flex gap-2.5">
+          <div className="flex gap-2 sm:gap-2.5 min-w-0">
             <input
               id="coverSearchInput"
               type="text"
@@ -483,13 +483,13 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               onFocus={handleSearchFocus}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by title and author..."
-              className="flex-1 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
+              className="flex-1 min-w-0 rounded-md px-3.5 py-2.5 text-sm sm:text-base font-sans bg-card/[0.04] text-foreground placeholder:text-foreground/35 border border-foreground/15 hover:border-foreground/30 focus-visible:border-secondary/60 focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:outline-none transition-all duration-150"
             />
             <button
               type="button"
               onClick={handleCoverSearch}
               disabled={isSearchingCover}
-              className="inline-flex items-center justify-center rounded-md bg-card/[0.08] hover:bg-card/[0.14] px-4 py-2.5 text-xs sm:text-sm font-sans font-medium text-foreground border border-foreground/15 transition-all duration-150 disabled:opacity-60 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
+              className="shrink-0 inline-flex items-center justify-center rounded-md bg-card/[0.08] hover:bg-card/[0.14] px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm font-sans font-medium text-foreground border border-foreground/15 transition-all duration-150 disabled:opacity-60 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
             >
               {isSearchingCover ? "Searching..." : "Search"}
             </button>
@@ -499,7 +499,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
           {searchResults !== null && (
             <div className="mt-4 pt-3 border-t border-foreground/10">
               {searchResults.length === 0 ? (
-                <p className="text-xs font-sans text-foreground/50 italic">
+                <p className="text-xs font-sans text-foreground/50 italic break-words">
                   No online cover found. Choose a curated spine color below instead.
                 </p>
               ) : (
@@ -507,7 +507,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
                   <p className="text-xs font-sans text-foreground/60 mb-2.5">
                     Click a cover to select it:
                   </p>
-                  <div className="flex items-start gap-3.5 overflow-x-auto pb-3 pt-1">
+                  <div className="flex items-start gap-3.5 overflow-x-auto pb-3 pt-1 max-w-full">
                     {searchResults.map((result, idx) => {
                       const isSelected =
                         selectedCoverType === "url" && selectedCoverUrl === result.cover_url;
@@ -558,7 +558,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
           <label className="block text-xs sm:text-sm font-sans font-medium text-foreground/80 tracking-wide uppercase mb-2">
             Choose a spine color instead
           </label>
-          <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+          <div className="flex items-center gap-2.5 sm:gap-4 flex-wrap">
             {SPINE_PALETTE.map((swatch) => {
               const isSelected =
                 selectedCoverType === "color" && selectedCoverColor === swatch.hex;
@@ -568,7 +568,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
                   type="button"
                   onClick={() => handleSelectColor(swatch.hex)}
                   aria-label={`Select ${swatch.name} spine`}
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-md ${swatch.bgClass} transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 active:scale-[0.95] relative flex items-center justify-center border border-foreground/15 shadow-xs ${
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-md ${swatch.bgClass} transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 active:scale-[0.95] relative flex items-center justify-center border border-foreground/15 shadow-xs shrink-0 ${
                     isSelected
                       ? "ring-2 ring-secondary ring-offset-2 ring-offset-background scale-105"
                       : "hover:scale-105 opacity-85 hover:opacity-100"
@@ -583,7 +583,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
               );
             })}
           </div>
-          <p className="mt-2 text-xs font-sans text-foreground/45 font-light">
+          <p className="mt-2 text-xs font-sans text-foreground/45 font-light break-words">
             {selectedCoverType === "url"
               ? "Cover artwork selected. Click a swatch above to use a solid spine color instead."
               : `Selected spine: ${
@@ -594,10 +594,10 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
       </div>
 
       {/* Submission Actions */}
-      <div className="pt-6 border-t border-foreground/10 flex items-center justify-between gap-4">
+      <div className="pt-6 border-t border-foreground/10 flex items-center justify-between flex-wrap gap-3 sm:gap-4">
         <Link
           href="/dashboard"
-          className="text-xs sm:text-sm font-sans text-foreground/70 hover:text-foreground transition-colors px-3 py-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
+          className="text-xs sm:text-sm font-sans text-foreground/70 hover:text-foreground transition-colors px-3 py-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 shrink-0"
         >
           &larr; Cancel
         </Link>
@@ -605,7 +605,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm sm:text-base font-sans font-medium text-card hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98] transition-all duration-150 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
+          className="inline-flex items-center justify-center rounded-md bg-primary px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-sans font-medium text-card hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98] transition-all duration-150 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 shrink-0"
         >
           {isSubmitting ? (
             <span className="inline-flex items-center gap-2">

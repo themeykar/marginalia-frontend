@@ -112,7 +112,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="flex-1 max-w-6xl w-full mx-auto px-6 sm:px-8 py-10 sm:py-16">
+    <div className="flex-1 max-w-6xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-16">
       {/* Header section with warm personalized greeting (preserved from Step 6) */}
       <section className="max-w-3xl">
         {isLoadingUser ? (
@@ -128,11 +128,11 @@ export default function DashboardPage() {
               <span>Reader&apos;s Ledger</span>
             </div>
 
-            <h1 className="font-serif font-normal text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.15] tracking-tight">
+            <h1 className="font-serif font-normal text-2xl sm:text-4xl md:text-5xl text-foreground leading-[1.15] tracking-tight break-words">
               Welcome back, {user?.username || "reader"}.
             </h1>
 
-            <p className="mt-4 max-w-xl text-base sm:text-lg text-foreground/75 font-sans font-light leading-relaxed">
+            <p className="mt-4 max-w-xl text-base sm:text-lg text-foreground/75 font-sans font-light leading-relaxed break-words">
               Your personal reading ledger is open. Record what you read,
               preserve the lines that moved you, and watch your shelf assemble
               over time.
@@ -142,11 +142,11 @@ export default function DashboardPage() {
       </section>
 
       {/* Shelf Header Bar with actions */}
-      <div className="mt-12 sm:mt-16 flex items-center justify-between flex-wrap gap-3">
+      <div className="mt-12 sm:mt-16 flex items-center justify-between flex-wrap gap-3 sm:gap-4">
         <span className="font-serif italic text-sm text-foreground/50">
           The Shelf
         </span>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center flex-wrap gap-2.5 sm:gap-3">
           <Link
             href="/year-in-books"
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-sans font-medium text-foreground/75 hover:text-foreground bg-card/[0.02] hover:bg-card/[0.06] border border-foreground/15 hover:border-foreground/30 px-3 py-1.5 rounded transition-all duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60"
@@ -170,7 +170,7 @@ export default function DashboardPage() {
           <section key={section.id} className="pt-8 border-t border-foreground/10">
             {/* Section Heading */}
             <div className="flex items-baseline justify-between mb-6">
-              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-foreground tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-foreground tracking-tight break-words">
                 {section.title}
               </h2>
             </div>
@@ -183,13 +183,13 @@ export default function DashboardPage() {
                 <div className="h-48 w-11 bg-foreground/5 rounded-t-[3px] animate-pulse" />
               </div>
             ) : section.books.length === 0 ? (
-              <p className="font-serif italic text-foreground/50 text-sm sm:text-base leading-relaxed max-w-xl py-4">
+              <p className="font-serif italic text-foreground/50 text-sm sm:text-base leading-relaxed max-w-xl py-4 break-words">
                 {section.emptyMessage}
               </p>
             ) : (
               <div>
                 {/* Bookshelf wrapping layout */}
-                <div className="flex flex-wrap items-end gap-x-3 sm:gap-x-4 gap-y-8 sm:gap-y-10 pt-4 pb-4 px-1">
+                <div className="flex flex-wrap items-end gap-x-3 sm:gap-x-4 gap-y-8 sm:gap-y-10 pt-4 pb-4 px-1 max-w-full">
                   {section.books.map((book) => {
                     const { heightClass, widthClass } = getSpineStyles(book);
 

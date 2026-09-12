@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function NewBookPage() {
   return (
-    <div className="flex-1 max-w-4xl w-full mx-auto px-6 sm:px-8 py-10 sm:py-14">
+    <div className="flex-1 max-w-4xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14">
       {/* Top back navigation */}
       <div className="mb-6">
         <Link
@@ -21,17 +21,17 @@ export default function NewBookPage() {
 
       {/* Page Header */}
       <div className="mb-8 sm:mb-10">
-        <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight break-words">
           Add a volume
         </h1>
-        <p className="mt-2 text-sm sm:text-base font-sans font-light text-foreground/70 leading-relaxed max-w-xl">
+        <p className="mt-2 text-sm sm:text-base font-sans font-light text-foreground/70 leading-relaxed max-w-xl break-words">
           Enter title and author to begin, search for cover artwork, or pick a
           curated spine color for your shelf.
         </p>
       </div>
 
       {/* Form Container */}
-      <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-6 sm:p-10">
+      <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-4 sm:p-8 md:p-10 min-w-0">
         <BookForm />
       </div>
     </div>

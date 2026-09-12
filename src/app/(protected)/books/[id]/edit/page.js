@@ -51,7 +51,7 @@ export default function EditBookPage() {
 
   if (isLoading) {
     return (
-      <div className="flex-1 max-w-4xl w-full mx-auto px-6 sm:px-8 py-10 sm:py-14">
+      <div className="flex-1 max-w-4xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14">
         <div className="animate-pulse space-y-4 max-w-xl">
           <div className="h-4 w-28 bg-foreground/10 rounded" />
           <div className="h-10 w-64 bg-foreground/10 rounded" />
@@ -64,12 +64,12 @@ export default function EditBookPage() {
 
   if (error || !book) {
     return (
-      <div className="flex-1 max-w-4xl w-full mx-auto px-6 sm:px-8 py-10 sm:py-14">
-        <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-8 text-center max-w-md mx-auto">
-          <h1 className="font-serif text-2xl text-foreground font-normal mb-2">
+      <div className="flex-1 max-w-4xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14">
+        <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-6 sm:p-8 text-center max-w-md mx-auto">
+          <h1 className="font-serif text-2xl text-foreground font-normal mb-2 break-words">
             Volume Not Found
           </h1>
-          <p className="text-sm font-sans text-foreground/60 mb-6">
+          <p className="text-sm font-sans text-foreground/60 mb-6 break-words">
             {error || "The volume you requested could not be loaded."}
           </p>
           <Link
@@ -84,7 +84,7 @@ export default function EditBookPage() {
   }
 
   return (
-    <div className="flex-1 max-w-4xl w-full mx-auto px-6 sm:px-8 py-10 sm:py-14">
+    <div className="flex-1 max-w-4xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14">
       {/* Top back navigation */}
       <div className="mb-6">
         <Link
@@ -97,17 +97,17 @@ export default function EditBookPage() {
 
       {/* Page Header */}
       <div className="mb-8 sm:mb-10">
-        <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight break-words">
           Edit volume
         </h1>
-        <p className="mt-2 text-sm sm:text-base font-sans font-light text-foreground/70 leading-relaxed max-w-xl">
+        <p className="mt-2 text-sm sm:text-base font-sans font-light text-foreground/70 leading-relaxed max-w-xl break-words">
           Update the reading status, cover, spine color, or details for &ldquo;
           {book.title}&rdquo;.
         </p>
       </div>
 
       {/* Form Container */}
-      <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-6 sm:p-10">
+      <div className="rounded-lg border border-foreground/10 bg-card/[0.02] p-4 sm:p-8 md:p-10 min-w-0">
         <BookForm initialData={book} bookId={id} isEdit={true} />
       </div>
     </div>

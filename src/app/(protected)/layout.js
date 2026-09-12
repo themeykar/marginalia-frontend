@@ -75,10 +75,10 @@ export default function ProtectedLayout({ children }) {
   }
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background text-foreground selection:bg-secondary/30 selection:text-foreground">
+    <div className="min-h-[100dvh] w-full max-w-full overflow-x-clip flex flex-col bg-background text-foreground selection:bg-secondary/30 selection:text-foreground">
       {/* Authenticated App Shell Chrome / Top Bar */}
       <header className="w-full border-b border-foreground/10 bg-background/80 backdrop-blur-xs sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 h-18 sm:h-20 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 h-18 sm:h-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               href="/dashboard"
@@ -109,7 +109,7 @@ export default function ProtectedLayout({ children }) {
       </header>
 
       {/* Main Page Area */}
-      <main className="flex-1 flex flex-col">{children}</main>
+      <main className="flex-1 flex flex-col min-w-0 w-full">{children}</main>
 
       {/* Discrete Shell Footer */}
       <footer className="w-full border-t border-foreground/10 py-6 text-center text-xs font-sans text-foreground/40 font-light">

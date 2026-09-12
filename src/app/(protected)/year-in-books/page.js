@@ -276,9 +276,9 @@ export default function YearInBooksPage() {
   // 1. LOCKED / ANTICIPATION STATE (Outside December 15–31)
   if (hasCheckedGate && !isUnlocked) {
     return (
-      <div className="flex-1 max-w-3xl w-full mx-auto px-6 sm:px-8 py-16 sm:py-24 flex flex-col items-center justify-center text-center">
-        <div className="rounded-xl border border-foreground/10 bg-card/[0.02] p-8 sm:p-14 max-w-xl w-full shadow-sm">
-          <div className="w-12 h-12 rounded-full border border-foreground/15 bg-card/[0.04] flex items-center justify-center mx-auto mb-6 text-secondary">
+      <div className="flex-1 max-w-3xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-24 flex flex-col items-center justify-center text-center">
+        <div className="rounded-xl border border-foreground/10 bg-card/[0.02] p-6 sm:p-12 md:p-14 max-w-xl w-full shadow-sm min-w-0">
+          <div className="w-12 h-12 rounded-full border border-foreground/15 bg-card/[0.04] flex items-center justify-center mx-auto mb-6 text-secondary shrink-0">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -295,15 +295,15 @@ export default function YearInBooksPage() {
             </svg>
           </div>
 
-          <span className="font-serif italic text-xs sm:text-sm text-foreground/50 tracking-wider uppercase block mb-2">
+          <span className="font-serif italic text-xs sm:text-sm text-foreground/50 tracking-wider uppercase block mb-2 break-words">
             The Annual Reveal
           </span>
 
-          <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight mb-4">
+          <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight mb-4 break-words">
             Your year is still being written.
           </h1>
 
-          <p className="font-sans text-sm sm:text-base font-light text-foreground/75 leading-relaxed max-w-md mx-auto mb-8">
+          <p className="font-sans text-sm sm:text-base font-light text-foreground/75 leading-relaxed max-w-md mx-auto mb-8 break-words">
             The ledger closes and reveals its annual portrait between December 15
             and December 31. Until then, continue turning pages, noting lines
             that linger, and letting your shelf gather volume.
@@ -323,7 +323,7 @@ export default function YearInBooksPage() {
   // 2. LOADING STATE (Inside window, waiting for API)
   if (isLoading) {
     return (
-      <div className="flex-1 max-w-2xl w-full mx-auto px-6 sm:px-8 py-16 sm:py-24 flex items-center justify-center">
+      <div className="flex-1 max-w-2xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-24 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -331,7 +331,7 @@ export default function YearInBooksPage() {
             alt="Marginalia"
             className="h-8 w-auto object-contain opacity-60 animate-pulse"
           />
-          <span className="font-serif italic text-xs text-foreground/50 tracking-wider">
+          <span className="font-serif italic text-xs text-foreground/50 tracking-wider break-words">
             Assembling your year in books...
           </span>
         </div>
@@ -342,13 +342,13 @@ export default function YearInBooksPage() {
   // 3. BRAND NEW ACCOUNT EMPTY STATE (Within window, but all stats zero/null)
   if (isCompletelyEmptyAccount || totalSlides === 0 || !currentSlide) {
     return (
-      <div className="flex-1 max-w-3xl w-full mx-auto px-6 sm:px-8 py-16 sm:py-24 flex flex-col items-center justify-center text-center">
-        <div className="rounded-xl border border-foreground/10 bg-card/[0.02] p-8 sm:p-14 max-w-xl w-full shadow-sm">
-          <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight mb-4">
+      <div className="flex-1 max-w-3xl w-full min-w-0 mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-24 flex flex-col items-center justify-center text-center">
+        <div className="rounded-xl border border-foreground/10 bg-card/[0.02] p-6 sm:p-12 md:p-14 max-w-xl w-full shadow-sm min-w-0">
+          <h1 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight mb-4 break-words">
             Your year is still being written.
           </h1>
 
-          <p className="font-sans text-sm sm:text-base font-light text-foreground/75 leading-relaxed max-w-md mx-auto mb-8">
+          <p className="font-sans text-sm sm:text-base font-light text-foreground/75 leading-relaxed max-w-md mx-auto mb-8 break-words">
             As you finish volumes and keep notes, your annual portrait will take
             shape here. Open your first book to begin.
           </p>
@@ -366,9 +366,9 @@ export default function YearInBooksPage() {
 
   // 4. SIGNATURE REVEAL SLIDESHOW
   return (
-    <div className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-14 flex flex-col justify-center items-center">
+    <div className="flex-1 max-w-3xl w-full min-w-0 mx-auto px-3 sm:px-6 md:px-8 py-6 sm:py-14 flex flex-col justify-center items-center">
       {/* Stories-style Container */}
-      <div className="w-full max-w-2xl rounded-xl border border-foreground/10 bg-card/[0.02] p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-lg min-h-[480px] sm:min-h-[520px] flex flex-col justify-between">
+      <div className="w-full max-w-2xl min-w-0 rounded-xl border border-foreground/10 bg-card/[0.02] p-5 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden shadow-lg min-h-[480px] sm:min-h-[520px] flex flex-col justify-between">
         {/* Invisible Tap Zones: Left 1/3 = back, Right 2/3 = forward */}
         <div
           onClick={handlePrev}
@@ -382,9 +382,9 @@ export default function YearInBooksPage() {
         />
 
         {/* Top Header: Stories Segmented Progress Bar & Controls */}
-        <div className="relative z-30 mb-8">
+        <div className="relative z-30 mb-8 min-w-0">
           {/* Segmented Progress Bars based strictly on filtered totalSlides */}
-          <div className="flex items-center gap-1.5 w-full mb-4">
+          <div className="flex items-center gap-1 sm:gap-1.5 w-full mb-4 min-w-0">
             {slides.map((_, idx) => {
               const isPassed = idx < safeIndex;
               const isCurrent = idx === safeIndex;
@@ -410,12 +410,12 @@ export default function YearInBooksPage() {
           </div>
 
           {/* Controls Bar */}
-          <div className="flex items-center justify-between">
-            <span className="font-serif italic text-xs text-foreground/50 tracking-widest uppercase">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <span className="font-serif italic text-xs text-foreground/50 tracking-widest uppercase shrink-0">
               Year in Books &middot; {safeIndex + 1} of {totalSlides}
             </span>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 shrink-0">
               {/* Play / Pause Toggle Button */}
               {!isFinalSlide && (
                 <button
@@ -500,35 +500,35 @@ export default function YearInBooksPage() {
                   </div>
 
                   {/* Book Details & Copy */}
-                  <div>
-                    <h2 className="font-serif text-2xl sm:text-3xl text-foreground font-normal leading-tight tracking-tight">
+                  <div className="min-w-0">
+                    <h2 className="font-serif text-2xl sm:text-3xl text-foreground font-normal leading-tight tracking-tight break-words">
                       {currentSlide.book.title}
                     </h2>
-                    <p className="mt-1 font-sans text-sm sm:text-base text-foreground/75 font-light">
+                    <p className="mt-1 font-sans text-sm sm:text-base text-foreground/75 font-light break-words">
                       by {currentSlide.book.author}
                     </p>
 
-                    <div className="mt-3 inline-block font-sans text-sm font-medium text-secondary">
+                    <div className="mt-3 inline-block font-sans text-sm font-medium text-secondary break-words">
                       {currentSlide.sublabel}
                     </div>
 
-                    <p className="mt-4 font-serif italic text-foreground/70 text-sm sm:text-base leading-relaxed max-w-md">
+                    <p className="mt-4 font-serif italic text-foreground/70 text-sm sm:text-base leading-relaxed max-w-md break-words">
                       {currentSlide.copy}
                     </p>
                   </div>
                 </div>
               ) : (
                 /* Slide variation: Large Stat or Genre Reveal */
-                <div>
-                  <div className="font-serif text-6xl sm:text-7xl md:text-8xl text-foreground font-normal tracking-tight leading-none">
+                <div className="min-w-0">
+                  <div className="font-serif text-4xl sm:text-6xl md:text-8xl text-foreground font-normal tracking-tight leading-tight sm:leading-none break-words">
                     {currentSlide.headline}
                   </div>
 
-                  <div className="mt-3 font-sans text-sm sm:text-base font-light text-secondary tracking-wide">
+                  <div className="mt-3 font-sans text-sm sm:text-base font-light text-secondary tracking-wide break-words">
                     {currentSlide.sublabel}
                   </div>
 
-                  <p className="mt-6 font-serif italic text-foreground/75 text-base sm:text-lg leading-relaxed max-w-md">
+                  <p className="mt-6 font-serif italic text-foreground/75 text-base sm:text-lg leading-relaxed max-w-md break-words">
                     {currentSlide.copy}
                   </p>
                 </div>
@@ -551,7 +551,7 @@ export default function YearInBooksPage() {
         </div>
 
         {/* Bottom Helper Bar */}
-        <div className="relative z-30 pt-4 border-t border-foreground/10 flex items-center justify-between text-xs font-sans text-foreground/40 font-light">
+        <div className="relative z-30 pt-4 border-t border-foreground/10 flex items-center justify-between flex-wrap gap-2 text-xs font-sans text-foreground/40 font-light">
           <span>Tap left to rewind &middot; Tap right to advance</span>
           <span className="hidden sm:inline">Space to pause</span>
         </div>
