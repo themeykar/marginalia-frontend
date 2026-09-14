@@ -12,6 +12,10 @@ const SPINE_PALETTE = [
   { id: "navy", name: "Navy", hex: "#2A3644", bgClass: "bg-spine-navy" },
   { id: "terracotta", name: "Terracotta", hex: "#9B4A38", bgClass: "bg-spine-terracotta" },
   { id: "parchment", name: "Parchment", hex: "#D8CEBC", bgClass: "bg-spine-parchment" },
+  { id: "dusty-rose", name: "Dusty Rose", hex: "#B5677D", bgClass: "bg-spine-dusty-rose" },
+  { id: "soft-muted-blush", name: "Soft Muted Blush", hex: "#E8CFD3", bgClass: "bg-spine-soft-muted-blush" },
+  { id: "muted-pink", name: "Muted Pink", hex: "#D9A6B3", bgClass: "bg-spine-muted-pink" },
+  { id: "vivid-magenta-pink", name: "Vivid Magenta-Pink", hex: "#FF66B2", bgClass: "bg-spine-vivid-magenta-pink" },
 ];
 
 export default function BookForm({ initialData = null, bookId = null, isEdit = false }) {
@@ -582,7 +586,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
           <label className="block text-xs sm:text-sm font-sans font-medium text-foreground/80 tracking-wide uppercase mb-2">
             Choose a spine color instead
           </label>
-          <div className="flex items-center gap-2.5 sm:gap-4 flex-wrap">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 py-1">
             {SPINE_PALETTE.map((swatch) => {
               const isSelected =
                 selectedCoverType === "color" && selectedCoverColor === swatch.hex;
@@ -592,7 +596,7 @@ export default function BookForm({ initialData = null, bookId = null, isEdit = f
                   type="button"
                   onClick={() => handleSelectColor(swatch.hex)}
                   aria-label={`Select ${swatch.name} spine`}
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-md ${swatch.bgClass} transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 active:scale-[0.95] relative flex items-center justify-center border border-foreground/15 shadow-xs shrink-0 ${
+                  className={`w-6 h-6 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-md ${swatch.bgClass} transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 active:scale-[0.95] relative flex items-center justify-center border border-foreground/15 shadow-xs shrink-0 ${
                     isSelected
                       ? "ring-2 ring-secondary ring-offset-2 ring-offset-background scale-105"
                       : "hover:scale-105 opacity-85 hover:opacity-100"

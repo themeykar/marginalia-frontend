@@ -13,6 +13,10 @@
   --spine-navy: #2A3644;
   --spine-terracotta: #9B4A38;
   --spine-parchment: #D8CEBC;
+  --spine-dusty-rose: #B5677D;
+  --spine-soft-muted-blush: #E8CFD3;
+  --spine-muted-pink: #D9A6B3;
+  --spine-vivid-magenta-pink: #FF66B2;
 }
 
 @theme inline {
@@ -28,6 +32,10 @@
   --color-spine-navy: var(--spine-navy);
   --color-spine-terracotta: var(--spine-terracotta);
   --color-spine-parchment: var(--spine-parchment);
+  --color-spine-dusty-rose: var(--spine-dusty-rose);
+  --color-spine-soft-muted-blush: var(--spine-soft-muted-blush);
+  --color-spine-muted-pink: var(--spine-muted-pink);
+  --color-spine-vivid-magenta-pink: var(--spine-vivid-magenta-pink);
   --font-serif: var(--font-fraunces);
   --font-sans: var(--font-inter);
 }
